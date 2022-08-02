@@ -1,7 +1,9 @@
 # Section 2
 
 #### The Brief
-Continuing from Section 1, we will begin to code the models(classes that represent the objects in the application). Using TDD we will consider our implementation first in JUnit Tests and then write the logic make our test pass. This will insure the objects behave as intended.
+Continuing from Section 1, we will begin to code the models(classes that represent the objects in the application). 
+Using TDD we will consider our implementation first in JUnit Tests and then write the logic make our test pass. 
+This will insure the objects behave as intended.
 
 ### Objectives
 * Continue using git version control
@@ -9,7 +11,8 @@ Continuing from Section 1, we will begin to code the models(classes that represe
 * Create test and implementations of data services
 
 ## Part 1 - Properties
-As of right now our models are empty and we need to add some properties. We need to think about what is needed to properly represent an item in our inventory. 
+As of right now our models are empty and we need to add some properties. We need to think about what is needed to properly represent 
+an item in our inventory. 
 
 For example:
 
@@ -62,13 +65,17 @@ Now we can add, commit and merge the changes back to 'dev' branch. And do the sa
 
 
 ## Part 2 - Accessors and Mutators
-We have a pretty nice class with properties that we can use to create lots of objects with. But unfortunately we can't access or change any of the properties. Let's make some changes so we allow access to these object fields.
+We have a pretty nice class with properties that we can use to create lots of objects with. But unfortunately we can't access or
+change any of the properties. Let's make some changes so we allow access to these object fields.
 
-Because we are Test Driven Developers we will define how we expect the object to behave through tests first. Then create the logic to execute this behavior.
+Because we are Test Driven Developers we will define how we expect the object to behave through tests first. Then create the logic 
+to execute this behavior.
 
-As always, create a new branch to develop on and open a models test file. I will be continuing with a SneakerTest class for the Sneaker object.
+As always, create a new branch to develop on and open a models test file. I will be continuing with a SneakerTest class for the 
+Sneaker object.
 
-I will start with testing the behavior of setting the 'name' property. So I will use the pattern of create a getter and setter for public access to this property.
+I will start with testing the behavior of setting the 'name' property. So I will use the pattern of create a getter and setter 
+for public access to this property.
 
 **test/java/models/SneakerTest.java**
 
