@@ -113,7 +113,8 @@ public void setName(String name) {
     this.name = name;
 }
 ```
-After the logic is complete, test to make sure everything is working as expected. Once the test is passing continue with the rest of the object properties.
+After the logic is complete, test to make sure everything is working as expected. Once the test is passing continue with the rest 
+of the object properties.
 
 1. Create the test
 2. Implement the logic
@@ -188,7 +189,8 @@ Sneaker s2 = new Sneaker(arg1, ag2, arg3...);
 Sneaker s3 = new Sneaker(arg1, ag2, arg3...);
 ```
 
-But the store is doing so well we will need to keep track of hundreds maybe thousands of sneakers. I could use an ArrayList to hold all of the sneakers I make.
+But the store is doing so well we will need to keep track of hundreds maybe thousands of sneakers. I could use an ArrayList to
+hold all of the sneakers I make.
 
 ```
 List<Sneaker> sneakerList = new ArrayList<Sneaker>();
@@ -212,11 +214,15 @@ sneakerList.add(new Sneaker(arg1, ag2, arg3...));
 sneakerList.add(new Sneaker(arg1, ag2, arg3...));
 ```
 
-This looks good, but we can take this a little further. The problem here is that if someone forgets to add a sneaker to the array it will not be managed and possible forgotten :( This will not be good, especially if we start doing batch processing on items in the array. If an item wasn't added then it will not be apart of the batch.
+This looks good, but we can take this a little further. The problem here is that if someone forgets to add a sneaker to the array it 
+will not be managed and possible forgotten :( This will not be good, especially if we start doing batch processing on items in the 
+array. If an item wasn't added then it will not be apart of the batch.
 
-Another problem is when we look to manipulate the collection of objects. Task such as finding objects and removing objects may need a few lines of code to accomplish. This can start to add up if we are creating, reading, updating and deleting objects from the array.
+Another problem is when we look to manipulate the collection of objects. Task such as finding objects and removing objects may need a
+few lines of code to accomplish. This can start to add up if we are creating, reading, updating and deleting objects from the array.
 
-A solution these problems is to abstract away these processes into a class that will manage the objects. A class that will proved the service of maintaining these objects.
+A solution these problems is to abstract away these processes into a class that will manage the objects. A class that will proved the 
+service of maintaining these objects.
 
 This is where Service classes comes handy. It will have methods for creating, finding and deleting objects from the list.
 
@@ -236,7 +242,8 @@ public class SneakerService {
 1. This is a static member that I will use to create id numbers for new objects. We will see more of this later.
 2. This is the collection that will hold all of the objects.
 
-As stated earlier, we are going to lean on this class to create, read, update, and delete. Lets go to the service test class and start with the sneaker creation behaviour.
+As stated earlier, we are going to lean on this class to create, read, update, and delete. Lets go to the service test class and 
+start with the sneaker creation behaviour.
 
 **/test/java/services/SneakerServiceTest.java**
 
@@ -281,9 +288,10 @@ public class SneakerServiceTest {
 ```
 
 1. We create some test data that we will use to create a test Sneaker.
-2. First I instantiate a SneakerService object. Then I will use ```create(arg1, arg2, arg3...)``` to have the service create and return a new sneaker object.
-3. Using accessor methods to capture the data from the newly created sneaker.
-4. Check/Assert that the data passed into the SneakerService was properly assigned to the new sneaker object returned.
+2. First I instantiate a SneakerService object. Then I will use ```create(arg1, arg2, arg3...)``` to have the service create and 
+3. return a new sneaker object.
+4. Using accessor methods to capture the data from the newly created sneaker.
+5. Check/Assert that the data passed into the SneakerService was properly assigned to the new sneaker object returned.
 
 Now it's time to implement the create sneaker logic:
 
@@ -336,7 +344,8 @@ Dont forget to write your tests first and commit along the way!
 
 Once you have completed this service, move on to the other services you will need to manage the other models.
 
-Now if we ever need to change the way we create, read, update, delete these objects we can do it here in this service object. It will then be reflected everywhere the service is used to do these operations. 
+Now if we ever need to change the way we create, read, update, delete these objects we can do it here in this service object. 
+It will then be reflected everywhere the service is used to do these operations. 
 
 
 

@@ -1,6 +1,6 @@
 package Models;
 
-public class ActionFigures {
+public class ActionFigure {
     private Integer id;
     private String name;
     private String color;
@@ -9,7 +9,7 @@ public class ActionFigures {
     private Integer qty;
     private Double price;
 
-    public ActionFigures(Integer id, String name, String color, String brand, Double size, Integer qty, Double price) {
+    public ActionFigure(Integer id, String name, String color, String brand, Double size, Integer qty, Double price) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -19,7 +19,7 @@ public class ActionFigures {
         this.price = price;
     }
 
-    public ActionFigures (){
+    public ActionFigure(){
 
     }
 
