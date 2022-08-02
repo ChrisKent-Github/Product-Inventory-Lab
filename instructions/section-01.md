@@ -142,10 +142,10 @@ git push  // push changes to github
 
 ## Part 3 - Classes
 
-Now it's time to thing about the Objects that will be apart of our inventory application. We will definately need a product to inventory.
+Now it's time to thing about the Objects that will be a part of our inventory application. We will definitely need a product to inventory.
 Come up with 2 products for your store, and thing about how you would represent them as Java objects.
 
-As an example I will be using a store that sells Sneakers and Whiskey. So, I know I will definately have a Sneaker class and a Whiskey
+As an example I will be using a store that sells Sneakers and Whiskey. So, I know I will definitely have a Sneaker class and a Whiskey
 class. We will see later on that we will create a few more classes to help manage our inventory.
 
 1. Create feature branch
@@ -225,7 +225,7 @@ maintain all the items. A class that provided the service of creating and managi
 
 Because we are Doing Test Driven Development (TDD) we need to also have test classes for the models and the services.
 
-For my example store I will have the follwing test classes.
+For my example store I will have the following test classes.
 
 ```
 src
