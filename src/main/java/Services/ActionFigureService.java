@@ -9,8 +9,8 @@ public class ActionFigureService {
     private static ArrayList<ActionFigure> inventory = new ArrayList<>();
 
 
-    public static ActionFigure create(String name, String color, String brand, Double size, Integer qty, Double price) {
-        ActionFigure createdFigure = new ActionFigure(nextId++, name, color, brand, size, qty, price);
+    public static ActionFigure create(String name, String brand, String color, Double size, Integer qty, Double price) {
+        ActionFigure createdFigure = new ActionFigure(nextId++, name, brand, color, size, qty, price);
         inventory.add(createdFigure);
         return createdFigure;
     }

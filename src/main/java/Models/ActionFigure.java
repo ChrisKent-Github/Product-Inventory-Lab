@@ -1,6 +1,7 @@
 package Models;
 
-public class ActionFigure {
+public class ActionFigure
+{
     private Integer id;
     private String name;
     private String color;
