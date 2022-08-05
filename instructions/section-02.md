@@ -351,4 +351,5 @@ It will then be reflected everywhere the service is used to do these operations.
 
 ## Conclusion
 
-We continued using git to make incremental changes to our program to ensure we have a recovery route if necessary. We added properties, getters and setters to the models and tested them as proof of implementation. Finally we created services for the models to help manage and centralize code.
+We continued using git to make incremental changes to our program to ensure we have a recovery route if necessary. We added properties, getters and setters to the models and tested them as proof of implementation. 
+Finally we created services for the models to help manage and centralize code.

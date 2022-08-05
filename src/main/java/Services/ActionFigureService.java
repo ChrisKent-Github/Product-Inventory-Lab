@@ -6,19 +6,19 @@ import java.util.ArrayList;
 
 public class ActionFigureService {
     private static int nextId = 1;
-    private static ArrayList<ActionFigure> inventory = new ArrayList<>();
+    private static ArrayList<ActionFigure> figureInventory = new ArrayList<>();
 
 
     public static ActionFigure create(String name, String brand, String color, Double size, Integer qty, Double price) {
         ActionFigure createdFigure = new ActionFigure(nextId++, name, brand, color, size, qty, price);
-        inventory.add(createdFigure);
+        figureInventory.add(createdFigure);
         return createdFigure;
     }
 
     public ActionFigure findActionFigure(Integer id) {
-        for (int i = 0; i < inventory.size(); i++) {
-            if (inventory.get(i).equals(id)) {
-                return inventory.get(i);
+        for (int i = 0; i < figureInventory.size(); i++) {
+            if (figureInventory.get(i).equals(id)) {
+                return figureInventory.get(i);
             } else {
                 return null;
             }
@@ -28,11 +28,11 @@ public class ActionFigureService {
 
 
         public ActionFigure[] findAll () {
-            return (ActionFigure[]) inventory.toArray();
+            return (ActionFigure[]) figureInventory.toArray();
         }
 
 
         public Boolean delete (Integer id ){
-        return inventory.remove(findActionFigure(id));
+        return figureInventory.remove(findActionFigure(id));
         }
     }
