@@ -34,4 +34,8 @@ public class NerfBlasterService {
     public Boolean delete (Integer id ){
         return nerfInventory.remove(findActionFigure(id));
     }
+
+    public void deleteAll (){
+        nerfInventory.clear();
+    }
 }

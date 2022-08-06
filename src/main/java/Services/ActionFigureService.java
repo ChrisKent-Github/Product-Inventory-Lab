@@ -35,4 +35,8 @@ public class ActionFigureService {
         public Boolean delete (Integer id ){
         return figureInventory.remove(findActionFigure(id));
         }
+
+        public void deleteAll (){
+        figureInventory.clear();
+        }
     }
