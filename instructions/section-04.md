@@ -2,7 +2,8 @@
 
 #### The Brief
 
-At this point, the inventory manager can create, read, update, and delete products. We have implemented a service to manage products and a console to interact with a user. This is awesome but there are some limitations to the application as it is now. One of these limitations is the lack of persistence, and we will tackle this next.
+At this point, the inventory manager can create, read, update, and delete products. We have implemented a service to manage products and a console to interact with a user. This is awesome but there are some limitations to the application as
+it is now. One of these limitations is the lack of persistence, and we will tackle this next.
 
 ### Objectives
 
@@ -12,7 +13,8 @@ At this point, the inventory manager can create, read, update, and delete produc
 
 ## Part 1 - Persistence
 
-At this moment the application can only save data in memory as it runs. If we stop the program or exit from the application, all of the inventory data is lost. This is not ideal because we may need to shut the program down from time to time. If there is ever a program crash the data will be lost as well. In order to save our data we will need to store it in a place that will persist over time. This is known as **persistent data** or **persistence**. There are many ways of achieving this, in this section we will use a Comma Separated Values(CSV) file to store data. CSV files are a common way to store and represent data. 
+At this moment the application can only save data in memory as it runs. If we stop the program or exit from the application, all of the inventory data is lost. This is not ideal because we may need to shut the program down from time to time.
+If there is ever a program crash the data will be lost as well. In order to save our data we will need to store it in a place that will persist over time. This is known as **persistent data** or **persistence**. There are many ways of achieving this, in this section we will use a Comma Separated Values(CSV) file to store data. CSV files are a common way to store and represent data. 
 
 ```
 1968,  86, "Greetings"
@@ -26,7 +28,8 @@ At this moment the application can only save data in memory as it runs. If we st
 ```
 Above is a CSV of a few Robert Deniro movies with the year released and the Rotten Tomatoes score. As you can see the data is separated by commas.
 
-CSV file are a nice way to store simple data, but as the data becomes more complicated so does the the CSV file. Because CSV file are plain text, it is easy to create and save them. However, because they are a simple text file it can be easy for anyone to open and edit these files. One must tread carefully, if the file is edited incorrectly it could lead to improper parsing of the data. CSV files are not easy to read and can be hard to edit sometimes so be mindful. 
+CSV file are a nice way to store simple data, but as the data becomes more complicated so does the the CSV file. Because CSV file are plain text, it is easy to create and save them. However, because they are a simple text file it can be easy 
+for anyone to open and edit these files. One must tread carefully, if the file is edited incorrectly it could lead to improper parsing of the data. CSV files are not easy to read and can be hard to edit sometimes so be mindful. 
 
 CSV are a widely used format for saving data. This means that possibility to share this data with other programs is high. Many programs and programing languages have the ability to process CSV data.
 

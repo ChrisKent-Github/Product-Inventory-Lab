@@ -1,5 +1,7 @@
 package Models;
 
+import java.util.Arrays;
+
 public class ActionFigure
 {
     private Integer id;
@@ -9,6 +11,7 @@ public class ActionFigure
     private Double size;
     private Integer qty;
     private Double price;
+
 
     public ActionFigure(Integer id, String name, String color, String brand, Double size, Integer qty, Double price) {
         this.id = id;
@@ -78,5 +81,21 @@ public class ActionFigure
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String toString(){
+        String[] att = {String.valueOf(this.id),this.name,this.color,this.brand, String.valueOf(this.size), String.valueOf(this.qty), String.valueOf(this.price)};
+        String finalString = "";
+        for(int i = 0; i < att.length; i++) {
+            finalString += String.format("%s", att[i]);
+            for (int j = 0; j <= 15 - att[i].length(); j++) {
+                finalString += " ";
+                if(j - (15 - att[i].length()) == 0){
+                    finalString += "|";
+                }
+            }
+        }
+
+        return finalString;
     }
 }

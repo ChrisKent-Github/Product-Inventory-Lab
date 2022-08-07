@@ -3,9 +3,10 @@ package Services;
 import Models.NerfBlaster;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NerfBlasterService {
-    private static int nextId = 1;
+    private static int nextId = 0;
     private static ArrayList<NerfBlaster> nerfInventory = new ArrayList<>();
 
     public static NerfBlaster create(String name, String type, String series, Double size, Integer qty, Double price) {
@@ -14,12 +15,10 @@ public class NerfBlasterService {
         return createdFigure;
     }
 
-    public NerfBlaster findActionFigure(Integer id) {
+    public NerfBlaster findNerfBlaster(Integer id) {
         for (int i = 0; i < nerfInventory.size(); i++) {
-            if (nerfInventory.get(i).equals(id)) {
+            if (nerfInventory.get(i).equals(nerfInventory.get(id))) {
                 return nerfInventory.get(i);
-            } else {
-                return null;
             }
         }
         return null;
@@ -27,15 +26,23 @@ public class NerfBlasterService {
 
 
     public NerfBlaster[] findAll () {
-        return (NerfBlaster[]) nerfInventory.toArray();
+        return nerfInventory.toArray(new NerfBlaster[nerfInventory.size()]);
     }
 
 
     public Boolean delete (Integer id ){
-        return nerfInventory.remove(findActionFigure(id));
+        return nerfInventory.remove(findNerfBlaster(id));
     }
 
     public void deleteAll (){
         nerfInventory.clear();
+    }
+
+    public String display(){
+        String stringInventory = "";
+        for (int i = 0; i < nerfInventory.size(); i++) {
+            stringInventory += nerfInventory.get(i).toString() + "\n";
+        }
+        return stringInventory;
     }
 }

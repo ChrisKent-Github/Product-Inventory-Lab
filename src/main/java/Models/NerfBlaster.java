@@ -1,5 +1,7 @@
 package Models;
 
+import java.util.Arrays;
+
 public class NerfBlaster {
     private Integer id;
     private String name;
@@ -78,5 +80,21 @@ public class NerfBlaster {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String toString(){
+        String[] att = {String.valueOf(this.id), this.name, this.type, this.series, String.valueOf(this.size), String.valueOf(this.qty), String.valueOf(this.price)};
+        String finalString = "";
+        for(int i = 0; i < att.length; i++) {
+            finalString += String.format("%s", att[i]);
+            for (int j = 0; j <= 15 - att[i].length(); j++) {
+                finalString += " ";
+                if(j - (15 - att[i].length()) == 0){
+                    finalString += "|";
+                }
+            }
+        }
+
+        return finalString;
     }
 }
