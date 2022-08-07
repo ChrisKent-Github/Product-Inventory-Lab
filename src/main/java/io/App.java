@@ -35,6 +35,10 @@ public class App {
         // (4)
         // application logic here
         // call methods to take user input and interface with services
+        ActionFigureService aServ = new ActionFigureService();
+        NerfBlasterService nServ = new NerfBlasterService();
+        aServ.loadData();
+        nServ.loadData();
         Console.printWelcome();
     }
 
@@ -42,7 +46,7 @@ public class App {
         Integer input = 0;
         Boolean returnMenu = true;
         while (returnMenu == true) {
-            System.out.println("1.Add Product\n2.Remove Product\n3.Update Product\n4.Product Report");
+            System.out.println("1.Add Product\n2.Remove Product\n3.Update Product\n4.Product Report\n5.Exit");
             Scanner scanMenu = new Scanner(System.in);
             input = Integer.parseInt(scanMenu.nextLine());
             if (input > 0) {
@@ -55,6 +59,8 @@ public class App {
                         updateProduct();
                     case 4:
                         productReport();
+                    case 5:
+                        exit();
                 }
             }
             scanMenu.close();
@@ -322,76 +328,50 @@ public class App {
         }
 
         public void writeToFile(Class service) throws IOException {
-        if(service.getClass().isInstance(ActionFigureService.class)) {
-            ActionFigureService aServ = new ActionFigureService();
-            CSVUtils.writeLine(figureWriter, new ArrayList<String>(Arrays.asList(String.valueOf(aServ.getNextId()))));
-            for (ActionFigure f: aServ.findAll()){
-                List<String> list = new ArrayList<>();
-                list.add(String.valueOf(f.getId()));
-                list.add(f.getName());
-                list.add(f.getColor());
-                list.add(f.getBrand());
-                list.add(String.valueOf(f.getSize()));
-                list.add(String.valueOf(f.getQty()));
-                list.add(String.valueOf(f.getPrice()));
+            if (service.getClass().isInstance(ActionFigureService.class)) {
+                ActionFigureService aServ = new ActionFigureService();
+                CSVUtils.writeLine(figureWriter, new ArrayList<String>(Arrays.asList(String.valueOf(aServ.getNextId()))));
+                for (ActionFigure f : aServ.findAll()) {
+                    List<String> list = new ArrayList<>();
+                    list.add(String.valueOf(f.getId()));
+                    list.add(f.getName());
+                    list.add(f.getColor());
+                    list.add(f.getBrand());
+                    list.add(String.valueOf(f.getSize()));
+                    list.add(String.valueOf(f.getQty()));
+                    list.add(String.valueOf(f.getPrice()));
 
-                CSVUtils.writeLine(figureWriter, list);
-            }
-            figureWriter.flush();
-            figureWriter.close();
-        }
-        else if(service.getClass().isInstance(NerfBlasterService.class)) {
-            NerfBlasterService nServ = new NerfBlasterService();
-            CSVUtils.writeLine(blasterWriter, new ArrayList<String>(Arrays.asList(String.valueOf(nServ.getNextId()))));
-            for (NerfBlaster f: nServ.findAll()){
-                List<String> list = new ArrayList<>();
-                list.add(String.valueOf(f.getId()));
-                list.add(f.getName());
-                list.add(f.getType());
-                list.add(f.getSeries());
-                list.add(String.valueOf(f.getSize()));
-                list.add(String.valueOf(f.getQty()));
-                list.add(String.valueOf(f.getPrice()));
-
-                CSVUtils.writeLine(blasterWriter, list);
-            }
-            blasterWriter.flush();
-            blasterWriter.close();
-        }
-
-            private void loadData(){
-                // (1)
-                String csvFile = "/Users/batman/Desktop/Sneaker.csv";
-                String line = "";
-                String csvSplitBy = ",";
-
-                // (2)
-                try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-                    nextId = Integer.parseInt(br.readLine());  // (3)
-
-                    while ((line = br.readLine()) != null) {
-                        // split line with comma
-                        String[] beer = line.split(csvSplitBy);
-
-                        // (4)
-                        int id = Integer.parseInt(beer[0]);
-                        String name = beer[1];
-                        String brand = beer[2];
-                        String sport = beer[3];
-                        int qty = Integer.parseInt(beer[4]);
-                        float price = Float.parseFloat(beer[5]);
-
-                        // (5)
-                        inventory.add(new Sneaker(id, name, brand, sport, qty, price));
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    CSVUtils.writeLine(figureWriter, list);
                 }
+                figureWriter.flush();
+//                figureWriter.close();
+            } else if (service.getClass().isInstance(NerfBlasterService.class)) {
+                NerfBlasterService nServ = new NerfBlasterService();
+                CSVUtils.writeLine(blasterWriter, new ArrayList<String>(Arrays.asList(String.valueOf(nServ.getNextId()))));
+                for (NerfBlaster f : nServ.findAll()) {
+                    List<String> list = new ArrayList<>();
+                    list.add(String.valueOf(f.getId()));
+                    list.add(f.getName());
+                    list.add(f.getType());
+                    list.add(f.getSeries());
+                    list.add(String.valueOf(f.getSize()));
+                    list.add(String.valueOf(f.getQty()));
+                    list.add(String.valueOf(f.getPrice()));
+
+                    CSVUtils.writeLine(blasterWriter, list);
+                }
+                blasterWriter.flush();
+//                blasterWriter.close();
             }
-
-
         }
 
+        public void exit() throws IOException {
+        blasterWriter.close();
+        figureWriter.close();
+        System.exit(0);
+        }
+}
 
-    }
+
+
 

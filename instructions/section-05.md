@@ -1,7 +1,7 @@
 # Section 5
 
 In this final section we will look at utilizing a common and popular data exchange format called JSON. With JSON we can easily represent an objects data to be passed around to other systems or saved to file. 
-The latter is what we will focus on in the this section
+The latter is what we will focus on in this section
 
 ### Objectives
 * Import a third party library
@@ -23,21 +23,21 @@ With the Jackson dependency add to the pom.xml file we are set to use the Jackso
 
 ## Part 2 - Reading in JSON
 
-We will use objests available to us from Jackson to read a JSON file. Then map the JSON data to the Java objects it represents, in this case the objects in our inventory.
+We will use objects available to us from Jackson to read a JSON file. Then map the JSON data to the Java objects it represents, in this case the objects in our inventory.
 
 ```
 ObjectMapper objectMapper = new ObjectMapper();
 this.inventory = objectMapper.readValue(new File("sneaker.json"), new TypeReference<List<Sneaker>>(){});
 ```
 
-Jackson offers us a ObjectMapper class that maps an objects data to JSON data and vise-versa. Next we call the ```.readValue``` method passing in two aurguments. The first is a file to read from. The second is the type of objects we want create 
+Jackson offers us a ObjectMapper class that maps an object's data to JSON data and vise-versa. Next we call the ```.readValue``` method passing in two aurguments. The first is a file to read from. The second is the type of objects we want create 
 from the JSON data.
 
 > notice the *new TypeReference* object that is instantiated. This is a Jackson object used to help reference the type of objects we want to create. Read the Jackson api for more
 
 ## Part 3 - Writing to JSON
 
-Lets look at saving JSON to file. We will use more objects from the Jackson library to create the JSON to write file.
+Let's look at saving JSON to file. We will use more objects from the Jackson library to create the JSON to write file.
 
 ```
 ObjectMapper mapper = new ObjectMapper();

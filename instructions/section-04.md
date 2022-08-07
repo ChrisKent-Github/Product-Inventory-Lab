@@ -183,21 +183,25 @@ private void loadData(){
 ```
 
 1. Set up some values to be used later
-2. We use a *try with resources* block to create a new BufferedReader and catch any exceptions that can occur.
-3. If there are problems retrieving the file, the catch block with handle exception
-4. Begin setting the state of the service by reading in the first line. If you remember the first line represents
-5. the nextId value.
-6. For every line read in from the CSV file, the program with split the string values by a ','. Then parsed into
-7. the proper data type if necessary.
-8. Finally, create a new item using the CSV data to set the initial state and add it to the inventory.
+2. We use a *try with resources* block to create a new BufferedReader and catch any exceptions that can occur. If there are problems retrieving the file, the catch block with handle exception
+3. Begin setting the state of the service by reading in the first line. If you remember the first line represents the nextId value.
+4. For every line read in from the CSV file, the program with split the string values by a ','. Then parsed into the proper data type if necessary.
+5. Finally, create a new item using the CSV data to set the initial state and add it to the inventory.
 
 ## Conclusion
 
-In this section we identified the need to be able to persist our data in order to save meaningful data over
-time. We used a utility class to help write and save the data to a CSV file. Because Comma Separated Values are a 
-common data format we have the ability to use this file in a number of different ways. This file a can later be 
-imported back into the program as we did earlier, or even used by other programs and systems if needed.
+In this section we identified the need to be able to persist our data in order to save
+meaningful data over
+time. We used a utility class to help write and save the data to a CSV file. Because Comma 
+Separated Values are a 
+common data format we have the ability to use this file in a number of different ways. This 
+file a can later be 
+imported back into the program as we did earlier, or even used by other programs and systems 
+if needed.
 
-This is pretty cool stuff we are embarking on. But can it get better? I think so! CSV files are great but have a
-few draw backs. One of these draw backs is readability, and being able to directly edit and understand larger sets
-of data. This is were CSV as some limitations, we are going to look an alternative that helps remedy this.
+This is pretty cool stuff we are embarking on. But can it get better? I think so! CSV files 
+are great but have a
+few draw backs. One of these draw backs is readability, and being able to directly edit and 
+understand larger sets
+of data. This is where CSV has some limitations, we are going to look an alternative that helps 
+remedy this.
