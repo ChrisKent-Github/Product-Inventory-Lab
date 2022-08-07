@@ -2,12 +2,18 @@ package Services;
 
 import Models.ActionFigure;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ActionFigureService {
     private static int nextId = 1;
     private static ArrayList<ActionFigure> figureInventory = new ArrayList<>();
+
+
+    public ActionFigureService(){
+    }
 
 
     public static ActionFigure create(String name, String brand, String color, Double size, Integer qty, Double price) {
@@ -45,5 +51,9 @@ public class ActionFigureService {
             stringInventory += figureInventory.get(i).toString() + "\n";
         }
         return stringInventory;
+     }
+
+     public Integer getNextId(){
+        return nextId;
      }
     }

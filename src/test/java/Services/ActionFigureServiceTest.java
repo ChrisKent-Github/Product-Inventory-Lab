@@ -4,10 +4,12 @@ import Models.ActionFigure;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 public class ActionFigureServiceTest {
 
     @Test
-    public void createTest(){
+    public void createTest() throws IOException {
 
         // (1)
         String expectedName = "Batman";

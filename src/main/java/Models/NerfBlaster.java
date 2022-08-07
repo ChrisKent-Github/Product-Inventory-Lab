@@ -87,9 +87,9 @@ public class NerfBlaster {
         String finalString = "";
         for(int i = 0; i < att.length; i++) {
             finalString += String.format("%s", att[i]);
-            for (int j = 0; j <= 15 - att[i].length(); j++) {
+            for (int j = 0; j <= 12 - att[i].length(); j++) {
                 finalString += " ";
-                if(j - (15 - att[i].length()) == 0){
+                if(j - (12 - att[i].length()) == 0){
                     finalString += "|";
                 }
             }

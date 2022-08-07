@@ -45,4 +45,8 @@ public class NerfBlasterService {
         }
         return stringInventory;
     }
+
+    public Integer getNextId(){
+        return nextId;
+    }
 }
