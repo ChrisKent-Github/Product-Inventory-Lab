@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class App {
 
-    private ActionFigureService actionService = new ActionFigureService(); // (1)
-
 
     public static void main(String... args){
         App application = new App(); // (2)
@@ -278,7 +276,7 @@ public class App {
             Scanner scanReport = new Scanner(System.in);
             ActionFigureService aServ = new ActionFigureService();
             NerfBlasterService nServ = new NerfBlasterService();
-            System.out.println(aServ.display());
+            System.out.println("Action Figures\n--------------\n" + aServ.display() + "Nerf Blasters\n-------------\n" + nServ.display());
             System.out.println("\n\nType exit to exit.");
             exit = scanReport.nextLine().toLowerCase().replaceAll("\\s+", "");
             if (exit.equals("exit")) {

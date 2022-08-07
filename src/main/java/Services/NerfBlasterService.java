@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NerfBlasterService {
-    private static int nextId = 0;
+    private static int nextId = 1;
     private static ArrayList<NerfBlaster> nerfInventory = new ArrayList<>();
 
     public static NerfBlaster create(String name, String type, String series, Double size, Integer qty, Double price) {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ActionFigureService {
-    private static int nextId = 0;
+    private static int nextId = 1;
     private static ArrayList<ActionFigure> figureInventory = new ArrayList<>();
 
 
