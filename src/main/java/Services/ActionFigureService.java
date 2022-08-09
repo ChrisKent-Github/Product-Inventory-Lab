@@ -1,6 +1,7 @@
 package Services;
 
 import Models.ActionFigure;
+import io.Console;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -72,25 +73,26 @@ public class ActionFigureService {
 
         // (2)
         try (BufferedReader br = new BufferedReader(new FileReader(figureCSVFile))) {
-            if(br.readLine() != null) {
-                aServ.setNextId(Integer.parseInt(br.readLine())); // (3)
-            }
+            if((line = br.readLine()) != null) {
+                aServ.setNextId(Integer.parseInt(line)); // (3)
 
-            while ((line = br.readLine()) != null) {
-                // split line with comma
-                String[] figureFromFile = line.split(csvSplitBy);
 
-                // (4)
-                int id = Integer.parseInt(figureFromFile[0]);
-                String name = figureFromFile[1];
-                String color = figureFromFile[2];
-                String brand = figureFromFile[3];
-                double size = Double.parseDouble(figureFromFile[4]);
-                int qty = Integer.parseInt(figureFromFile[5]);
-                double price = Double.parseDouble(figureFromFile[6]);
+                while ((line = br.readLine()) != null) {
+                    // split line with comma
+                    String[] figureFromFile = line.split(csvSplitBy);
 
-                // (5)
-                figureInventory.add(new ActionFigure(id, name, color, brand, size, qty, price));
+                    // (4)
+                    int id = Integer.parseInt(figureFromFile[0]);
+                    String name = figureFromFile[1];
+                    String color = figureFromFile[2];
+                    String brand = figureFromFile[3];
+                    double size = Double.parseDouble(figureFromFile[4]);
+                    int qty = Integer.parseInt(figureFromFile[5]);
+                    double price = Double.parseDouble(figureFromFile[6]);
+
+                    // (5)
+                    figureInventory.add(new ActionFigure(id, name, color, brand, size, qty, price));
+                }
             }
          } catch (IOException e) {
             e.printStackTrace();

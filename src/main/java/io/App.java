@@ -9,7 +9,6 @@ import utils.CSVUtils;
 import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,16 +16,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    String figureCSVFile = "/Users/chris/Desktop/Figure.csv";
-    FileWriter figureWriter = new FileWriter(figureCSVFile); //(1)
-    String blasterCSVFile = "/Users/chris/Desktop/Blaster.csv";
-    FileWriter blasterWriter = new FileWriter(blasterCSVFile); //(1)
 
     public App() throws IOException {
     }
 
     public static void main(String... args) throws IOException {
+        Console.loadAllData();
         App application = new App(); // (2)
+        ActionFigureService aServ = new ActionFigureService();
+        NerfBlasterService nServ = new NerfBlasterService();
+        Console.writeToFile(aServ.getClass());
+        Console.writeToFile(nServ.getClass());
         application.init();  // (3)
         application.menu();
     }
@@ -35,10 +35,6 @@ public class App {
         // (4)
         // application logic here
         // call methods to take user input and interface with services
-        ActionFigureService aServ = new ActionFigureService();
-        NerfBlasterService nServ = new NerfBlasterService();
-        aServ.loadData();
-        nServ.loadData();
         Console.printWelcome();
     }
 
@@ -107,10 +103,10 @@ public class App {
                 opt6 = Double.parseDouble(scanAdd.nextLine());
                 if (input == 1) {
                     ActionFigureService.create(opt1, opt2, opt3, opt4, opt5, opt6);
-                    writeToFile(aServ.getClass());
+                    Console.writeToFile(aServ.getClass());
                 } else {
                     NerfBlasterService.create(opt1, opt2, opt3, opt4, opt5, opt6);
-                    writeToFile(nServ.getClass());
+                    Console.writeToFile(nServ.getClass());
                 }
                 System.out.println("Would you like to add another product?\nYes or no?");
                 yesOrNo = scanAdd.nextLine().toLowerCase().replaceAll("\\s+", "");
@@ -143,12 +139,12 @@ public class App {
                 NerfBlasterService nServ = new NerfBlasterService();
                 if(input == 1 && input2 == 2  && aServ.findAll().length > 0){
                     aServ.deleteAll();
-                    writeToFile(aServ.getClass());
+                    Console.writeToFile(aServ.getClass());
                     System.out.println("All Action Figure products removed successfully.");
                 }
                 else if(input == 2 && input2 == 2 && nServ.findAll().length > 0){
                     nServ.deleteAll();
-                    writeToFile(nServ.getClass());
+                    Console.writeToFile(nServ.getClass());
                     System.out.println("All Nerf Blaster products removed successfully.");
                 }
                 System.out.println("Enter Id of product you would like to remove from inventory.");
@@ -156,7 +152,7 @@ public class App {
                 if (input == 1 && input2 == 1 && aServ.findAll().length > 0) {
                     if (aServ.findActionFigure(idRemove) != null) {
                         aServ.delete(idRemove);
-                        writeToFile(aServ.getClass());
+                        Console.writeToFile(aServ.getClass());
                         System.out.println("Action Figure Product #" + idRemove + ": Removed successfully.");
                     } else {
                         System.out.println("No product with Id:" + idRemove + "exists in inventory.");
@@ -164,7 +160,7 @@ public class App {
                 } else if (input == 2 && input2 == 1 && nServ.findAll().length > 0) {
                     if (nServ.findNerfBlaster(idRemove) != null) {
                         nServ.delete(idRemove);
-                        writeToFile(nServ.getClass());
+                        Console.writeToFile(nServ.getClass());
                         System.out.println("Nerf Blaster Product #" + idRemove + ": Removed successfully.");
                     } else {
                         System.out.println("No product with Id:" + idRemove + "exists in inventory.");
@@ -217,37 +213,37 @@ public class App {
                                 System.out.println("Enter new name.");
                                 newName = scanUpdate.nextLine();
                                 aServ.findActionFigure(idUpdate).setName(newName);
-                                writeToFile(aServ.getClass());
+                                Console.writeToFile(aServ.getClass());
                                 break;
                             case 2:
                                 System.out.println("Enter new color.");
                                 newColor = scanUpdate.nextLine();
                                 aServ.findActionFigure(idUpdate).setColor(newColor);
-                                writeToFile(aServ.getClass());
+                                Console.writeToFile(aServ.getClass());
                                 break;
                             case 3:
                                 System.out.println("Enter new brand.");
                                 newBrand = scanUpdate.nextLine();
                                 aServ.findActionFigure(idUpdate).setBrand(newBrand);
-                                writeToFile(aServ.getClass());
+                                Console.writeToFile(aServ.getClass());
                                 break;
                             case 4:
                                 System.out.println("Enter new size.");
                                 newSize = Double.parseDouble(scanUpdate.nextLine());
                                 aServ.findActionFigure(idUpdate).setSize(newSize);
-                                writeToFile(aServ.getClass());
+                                Console.writeToFile(aServ.getClass());
                                 break;
                             case 5:
                                 System.out.println("Enter new quantity.");
                                 newQty = Integer.parseInt(scanUpdate.nextLine());
                                 aServ.findActionFigure(idUpdate).setQty(newQty);
-                                writeToFile(aServ.getClass());
+                                Console.writeToFile(aServ.getClass());
                                 break;
                             case 6:
                                 System.out.println("Enter new price.");
                                 newPrice = Double.parseDouble(scanUpdate.nextLine());
                                 aServ.findActionFigure(idUpdate).setPrice(newPrice);
-                                writeToFile(aServ.getClass());
+                                Console.writeToFile(aServ.getClass());
                                 break;
 
                         }
@@ -260,37 +256,37 @@ public class App {
                                 System.out.println("Enter new name.");
                                 newName = scanUpdate.nextLine();
                                 nServ.findNerfBlaster(idUpdate).setName(newName);
-                                writeToFile(nServ.getClass());
+                                Console.writeToFile(nServ.getClass());
                                 break;
                             case 2:
                                 System.out.println("Enter new color.");
                                 newType = scanUpdate.nextLine();
                                 nServ.findNerfBlaster(idUpdate).setType(newType);
-                                writeToFile(nServ.getClass());
+                                Console.writeToFile(nServ.getClass());
                                 break;
                             case 3:
                                 System.out.println("Enter new brand.");
                                 newSeries = scanUpdate.nextLine();
                                 nServ.findNerfBlaster(idUpdate).setSeries(newSeries);
-                                writeToFile(nServ.getClass());
+                                Console.writeToFile(nServ.getClass());
                                 break;
                             case 4:
                                 System.out.println("Enter new size.");
                                 newSize = Double.parseDouble(scanUpdate.nextLine());
                                 nServ.findNerfBlaster(idUpdate).setSize(newSize);
-                                writeToFile(nServ.getClass());
+                                Console.writeToFile(nServ.getClass());
                                 break;
                             case 5:
                                 System.out.println("Enter new quantity.");
                                 newQty = Integer.parseInt(scanUpdate.nextLine());
                                 nServ.findNerfBlaster(idUpdate).setQty(newQty);
-                                writeToFile(nServ.getClass());
+                                Console.writeToFile(nServ.getClass());
                                 break;
                             case 6:
                                 System.out.println("Enter new price.");
                                 newPrice = Double.parseDouble(scanUpdate.nextLine());
                                 nServ.findNerfBlaster(idUpdate).setPrice(newPrice);
-                                writeToFile(nServ.getClass());
+                                Console.writeToFile(nServ.getClass());
                                 break;
 
                         }
@@ -327,47 +323,9 @@ public class App {
             }
         }
 
-        public void writeToFile(Class service) throws IOException {
-            if (service.getClass().isInstance(ActionFigureService.class)) {
-                ActionFigureService aServ = new ActionFigureService();
-                CSVUtils.writeLine(figureWriter, new ArrayList<String>(Arrays.asList(String.valueOf(aServ.getNextId()))));
-                for (ActionFigure f : aServ.findAll()) {
-                    List<String> list = new ArrayList<>();
-                    list.add(String.valueOf(f.getId()));
-                    list.add(f.getName());
-                    list.add(f.getColor());
-                    list.add(f.getBrand());
-                    list.add(String.valueOf(f.getSize()));
-                    list.add(String.valueOf(f.getQty()));
-                    list.add(String.valueOf(f.getPrice()));
 
-                    CSVUtils.writeLine(figureWriter, list);
-                }
-                figureWriter.flush();
-//                figureWriter.close();
-            } else if (service.getClass().isInstance(NerfBlasterService.class)) {
-                NerfBlasterService nServ = new NerfBlasterService();
-                CSVUtils.writeLine(blasterWriter, new ArrayList<String>(Arrays.asList(String.valueOf(nServ.getNextId()))));
-                for (NerfBlaster f : nServ.findAll()) {
-                    List<String> list = new ArrayList<>();
-                    list.add(String.valueOf(f.getId()));
-                    list.add(f.getName());
-                    list.add(f.getType());
-                    list.add(f.getSeries());
-                    list.add(String.valueOf(f.getSize()));
-                    list.add(String.valueOf(f.getQty()));
-                    list.add(String.valueOf(f.getPrice()));
-
-                    CSVUtils.writeLine(blasterWriter, list);
-                }
-                blasterWriter.flush();
-//                blasterWriter.close();
-            }
-        }
 
         public void exit() throws IOException {
-        blasterWriter.close();
-        figureWriter.close();
         System.exit(0);
         }
 }

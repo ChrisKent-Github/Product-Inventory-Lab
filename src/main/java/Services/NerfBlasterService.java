@@ -2,6 +2,7 @@ package Services;
 
 import Models.ActionFigure;
 import Models.NerfBlaster;
+import io.Console;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -64,28 +65,30 @@ public class NerfBlasterService {
         String line = "";
         String csvSplitBy = ",";
         NerfBlasterService nServ = new NerfBlasterService();
+        Console console = new Console();
 
         // (2)
         try (BufferedReader br = new BufferedReader(new FileReader(figureCSVFile))) {
-            if(br.readLine() != null) {
-            nServ.setNextId(Integer.parseInt(br.readLine())); // (3)
-            }
+            if((line = br.readLine()) != null) {
+                nServ.setNextId(Integer.parseInt(line)); // (3)
 
-            while ((line = br.readLine()) != null) {
-                // split line with comma
-                String[] figureFromFile = line.split(csvSplitBy);
 
-                // (4)
-                int id = Integer.parseInt(figureFromFile[0]);
-                String name = figureFromFile[1];
-                String type = figureFromFile[2];
-                String series = figureFromFile[3];
-                double size = Double.parseDouble(figureFromFile[4]);
-                int qty = Integer.parseInt(figureFromFile[5]);
-                double price = Double.parseDouble(figureFromFile[6]);
+                while ((line = br.readLine()) != null) {
+                    // split line with comma
+                    String[] figureFromFile = line.split(csvSplitBy);
 
-                // (5)
-                nerfInventory.add(new NerfBlaster(id, name, type, series, size, qty, price));
+                    // (4)
+                    int id = Integer.parseInt(figureFromFile[0]);
+                    String name = figureFromFile[1];
+                    String type = figureFromFile[2];
+                    String series = figureFromFile[3];
+                    double size = Double.parseDouble(figureFromFile[4]);
+                    int qty = Integer.parseInt(figureFromFile[5]);
+                    double price = Double.parseDouble(figureFromFile[6]);
+
+                    // (5)
+                    nerfInventory.add(new NerfBlaster(id, name, type, series, size, qty, price));
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
